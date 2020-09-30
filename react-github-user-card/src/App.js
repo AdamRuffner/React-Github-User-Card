@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Cards from "./components/Cards";
+import "./styles.css";
 
 import "./App.css";
 
@@ -9,31 +10,23 @@ class App extends React.Component {
     users: [],
   };
 
-  componentDidMount() {
-    axios
-      .get(`https://api.github.com/users/adamruffner/followers`)
-      .then((res) => {
-        this.setState({ users: [...this.state.users, res.data] });
+  buildArray = async () => {
+    const res = await axios.get(`https://api.github.com/users/AdamRuffner`);
+    const response = await axios.get(res.data.followers_url);
+    const results = await Promise.all(
+      response.data.map((follower) => {
+        return axios.get(follower.url);
       })
-      .catch();
+    );
+    const resultData = results.map((result) => result.data);
+    this.setState({ users: [...this.state.users, res.data, ...resultData] });
+  };
+
+  componentDidMount() {
+    this.buildArray(this.state.name);
   }
 
-  // handleNameChange = (e) => {
-  //   this.setState({
-  //     name: e.target.name
-  //   });
-  // }
 
-  // onSubmit = (e) => {
-  //   e.preventDefailt();
-  //   this.fetchName(this.state.name)
-  // }
-
-  // fetchName = () => {
-  //   fetch(`https://api.github.com/users/adamruffner/followers`).then((res) =>
-  //     console.log(res.data)
-  //   );
-  // };
 
   render() {
     return (

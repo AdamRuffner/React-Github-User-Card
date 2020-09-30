@@ -1,0 +1,45 @@
+.App{
+    background-color: #B6E2D3;
+}
+
+.cards{
+    background-color: #B6E2D3;
+}
+
+.card {
+    display: flex;
+   width:30%;
+   flex-direction: column;
+   border: 1px solid black;
+   border-radius: 100px;
+   margin: 2% auto;
+   padding: 1%;
+   background-color: #FAE8E0;
+}
+
+.card img{
+    width: 25%;
+    margin: 0 auto;
+    border-radius: 200px;
+    
+}
+
+h1{
+    color:black;
+    margin: 2%;
+}
+
+h3{
+   color: #EF7C8E;
+}
+
+a {
+    text-decoration: none;
+    border: 1px solid black;
+    width: 25%;
+    margin: 2% auto;
+    border-radius: 200px;
+    background-color: #B6E2D3;
+    color: #EF7C8E;
+    cursor: pointer;
+}

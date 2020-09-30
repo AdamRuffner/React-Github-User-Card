@@ -5,11 +5,10 @@ class Cards extends React.Component {
   render() {
     return (
       <div className="cards">
-        {this.props.users.map((item) =>
-          item.map((user) => {
-            return <Card key={user.id} user={user} />;
-          })
-        )}
+        {this.props.users.map((user) =>{
+            return <Card user={user} />
+        })}
+        
       </div>
     );
   }
